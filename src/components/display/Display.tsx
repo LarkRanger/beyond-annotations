@@ -37,10 +37,9 @@ function DisplayInner(props: HTMLAttributes<HTMLDivElement>) {
             <image
               width={store.imageDimensions.width}
               height={store.imageDimensions.height}
-              href={store.imageUrl}
+              href={store.imageSrc}
               style={{ verticalAlign: 'middle' }}
             />
-
             {store.visibleUserAnnotations.map(annotation => (
               <Annotation key={annotation.id} annotation={annotation} />
             ))}

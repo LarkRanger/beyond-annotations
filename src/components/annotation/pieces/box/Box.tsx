@@ -3,8 +3,9 @@ import { reaction } from 'mobx';
 import { observer } from 'mobx-react-lite';
 import { useEffect } from 'react';
 import { UserAnnotation } from 'stores';
-import './styles.css';
+import { Draggable } from 'gsap/Draggable';
 import { ContextMenu } from 'components/contextMenu';
+import './styles.css';
 
 interface BoxProps {
   annotation: UserAnnotation;

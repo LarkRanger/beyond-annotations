@@ -10,9 +10,8 @@ import { Dimensions } from 'types';
 export function useLabelDimensions(annotation: UserAnnotation): Dimensions {
   return useMemo(() => {
     if (!annotation.isVisible) return { width: 0, height: 0 };
-    const text = document.getElementById(
-      `label-text-${annotation.id}`,
-    ) as HTMLElement;
+    const text = document.getElementById(`label-text-${annotation.id}`);
+    if (!text) return { width: 0, height: 0 };
     const { width, height } = text.getBoundingClientRect();
     return { width, height };
   }, [

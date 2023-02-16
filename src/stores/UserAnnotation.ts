@@ -2,7 +2,7 @@ import { DEFAULT_LABEL, LabelColors } from 'consts';
 import { makeAutoObservable, reaction } from 'mobx';
 import { nanoid } from 'nanoid';
 import { BoundingBox, Bounds } from 'types';
-import {AnnotationStore} from './AnnotationStore';
+import { AnnotationStore } from './AnnotationStore';
 
 export class UserAnnotation {
   private annotationStore: AnnotationStore;
@@ -135,23 +135,8 @@ export class UserAnnotation {
     this._isContextMenuOpen = false;
   }
 
-  /**
-   * Set selected annotation in the store to this, translating into UI components.
-   * Then, if the annotation box is visible (i.e. exists in the DOM), move it to the end of its list.
-   */
   select() {
     this.annotationStore.select(this.id);
-    const annotation = document.getElementById(
-      `annotation-g-${this.id}`,
-    ) as HTMLElement;
-    if (!annotation) return;
-    const wrapper = document.getElementById(
-      'annotation-image-wrapper',
-    ) as HTMLElement;
-    wrapper.insertBefore(
-      annotation,
-      wrapper.lastChild && wrapper.lastChild.nextSibling,
-    );
   }
 
   deselect() {

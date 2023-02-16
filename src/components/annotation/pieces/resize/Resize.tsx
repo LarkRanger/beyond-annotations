@@ -4,6 +4,8 @@ import { reaction } from 'mobx';
 import { observer } from 'mobx-react-lite';
 import { useEffect } from 'react';
 import { useStore } from 'hooks';
+import { gsap } from 'gsap/gsap-core';
+import { Draggable } from 'gsap/Draggable';
 import './styles.css';
 
 interface ResizeProps {

@@ -3,14 +3,14 @@ import { makeAutoObservable, reaction, runInAction } from 'mobx';
 import { UserAnnotation } from './UserAnnotation';
 import { Label } from './Label';
 import { Tools, Tool, DEFAULT_LABEL } from 'consts';
-import { Bounds, ElementIds } from 'types';
+import { Bounds, Dimensions, ElementIds } from 'types';
 import { nanoid } from 'nanoid';
 
 export class AnnotationStore {
   private _userAnnotations: UserAnnotation[];
   private _labels: Label[];
-  private _imageUrl?: string;
-  private _imageDimensions?: { width: number; height: number };
+  private _imageSrc?: string;
+  private _imageDimensions: Dimensions;
   private _selectedId?: string;
   private _scale: number;
   private _initialScale: number;
@@ -34,6 +34,7 @@ export class AnnotationStore {
     this._tool = Tools.PAN;
     this._arePredictionsShown = true;
     this._areLabelsShown = true;
+    this._imageDimensions = { width: 0, height: 0 };
 
     this.elementIds = {
       imageWrapper: nanoid(),
@@ -64,6 +65,11 @@ export class AnnotationStore {
         }
       },
     );
+
+    reaction(
+      () => this.imageSrc,
+      () => this.loadImage(),
+    );
   }
 
   get userAnnotations() {
@@ -82,11 +88,15 @@ export class AnnotationStore {
     return this._labels;
   }
 
-  get imageUrl(): string {
-    return this._imageUrl ?? '';
+  get imageSrc() {
+    return this._imageSrc ?? '';
   }
 
-  get imageDimensions(): { width: number; height: number } {
+  set imageSrc(src: string) {
+    this._imageSrc = src;
+  }
+
+  get imageDimensions() {
     return this._imageDimensions ?? { width: 0, height: 0 };
   }
 
@@ -172,7 +182,7 @@ export class AnnotationStore {
 
   loadImage() {
     const image = new Image();
-    image.src = this.imageUrl;
+    image.src = this.imageSrc;
     image.onload = () =>
       (this.imageDimensions = { width: image.width, height: image.height });
   }
