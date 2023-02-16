@@ -1,4 +1,4 @@
-import { DEFAULT_LABEL, LabelColor } from 'consts';
+import { DEFAULT_LABEL, LabelColors } from 'consts';
 import { makeAutoObservable, reaction } from 'mobx';
 import { nanoid } from 'nanoid';
 import { BoundingBox, Bounds } from 'types';
@@ -22,7 +22,7 @@ export default class UserAnnotation {
 
   constructor(
     annotationTool: AnnotationStore,
-    box: BoundingBox,
+    box: Bounds,
     isCreating: boolean = false,
   ) {
     makeAutoObservable(this, undefined, { autoBind: true });
@@ -86,9 +86,9 @@ export default class UserAnnotation {
   }
 
   get color(): string {
-    if (!this._labelId) return LabelColor.DEFAULT;
+    if (!this._labelId) return LabelColors.DEFAULT;
     const label = this.annotationStore.getLabel(this._labelId);
-    return label?.color ?? LabelColor.DEFAULT;
+    return label?.color ?? LabelColors.DEFAULT;
   }
 
   get scale(): number {
@@ -140,7 +140,7 @@ export default class UserAnnotation {
    * Then, if the annotation box is visible (i.e. exists in the DOM), move it to the end of its list.
    */
   select() {
-    this.annotationStore.selectAnnotation(this.id);
+    this.annotationStore.select(this.id);
     const annotation = document.getElementById(
       `annotation-g-${this.id}`,
     ) as HTMLElement;
@@ -163,7 +163,7 @@ export default class UserAnnotation {
   }
 
   remove() {
-    this.annotationStore.removeById(this.id);
+    this.annotationStore.remove(this.id);
   }
 
   registerDraggable(instance: Draggable) {
@@ -173,6 +173,13 @@ export default class UserAnnotation {
   setCreationEvent(event?: MouseEvent) {
     this._creationEvent = event;
     if (event) this._isCreating = false;
+  }
+
+  toJSON(): BoundingBox {
+    return {
+      ...this.box,
+      value: this.label,
+    };
   }
 
   private handleDelete(event: KeyboardEvent) {
