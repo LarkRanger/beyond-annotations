@@ -1,5 +1,7 @@
+import { AnnotationProvider } from 'contexts';
+
 function App() {
-  return <div></div>;
+  return <AnnotationProvider></AnnotationProvider>;
 }
 
 export default App;

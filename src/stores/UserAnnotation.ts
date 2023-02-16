@@ -2,9 +2,9 @@ import { DEFAULT_LABEL, LabelColors } from 'consts';
 import { makeAutoObservable, reaction } from 'mobx';
 import { nanoid } from 'nanoid';
 import { BoundingBox, Bounds } from 'types';
-import AnnotationStore from './AnnotationStore';
+import {AnnotationStore} from './AnnotationStore';
 
-export default class UserAnnotation {
+export class UserAnnotation {
   private annotationStore: AnnotationStore;
 
   readonly id: string;

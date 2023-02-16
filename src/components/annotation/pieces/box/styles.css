@@ -1,0 +1,7 @@
+.box rect {
+  transition: fill-opacity 0.25s ease, fill 0.25s ease;
+}
+
+.box rect:hover {
+  fill-opacity: 0.5;
+}

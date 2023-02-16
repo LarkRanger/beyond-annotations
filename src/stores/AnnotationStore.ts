@@ -1,12 +1,12 @@
 import { makeAutoObservable, reaction, runInAction } from 'mobx';
 
-import UserAnnotation from './Annotation';
+import { UserAnnotation } from './UserAnnotation';
 import { Label } from './Label';
 import { Tools, Tool, DEFAULT_LABEL } from 'consts';
-import { BoundingBox, Bounds, ElementIds } from 'types';
+import { Bounds, ElementIds } from 'types';
 import { nanoid } from 'nanoid';
 
-export default class AnnotationStore {
+export class AnnotationStore {
   private _userAnnotations: UserAnnotation[];
   private _labels: Label[];
   private _imageUrl?: string;
@@ -35,7 +35,16 @@ export default class AnnotationStore {
     this._arePredictionsShown = true;
     this._areLabelsShown = true;
 
-    this.elementIds = { imageWrapper: nanoid() };
+    this.elementIds = {
+      imageWrapper: nanoid(),
+      transformWrapper: nanoid(),
+      getGroupId: id => `annotation-g-${id}`,
+      getRectId: id => `box-rect-${id}`,
+      getBoxId: id => `box-g-${id}`,
+      getResizeId: id => `resize-g-${id}`,
+      getLabelId: id => `label-g-${id}`,
+      getTextId: id => `label-text-${id}`,
+    };
 
     // Change tool when tool changes
     reaction(

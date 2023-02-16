@@ -1,0 +1,31 @@
+.topLeft {
+  cursor: nwse-resize !important;
+}
+
+.top {
+  cursor: ns-resize !important;
+}
+
+.topRight {
+  cursor: nesw-resize !important;
+}
+
+.left {
+  cursor: ew-resize !important;
+}
+
+.right {
+  cursor: ew-resize !important;
+}
+
+.bottomLeft {
+  cursor: nesw-resize !important;
+}
+
+.bottom {
+  cursor: ns-resize !important;
+}
+
+.bottomRight {
+  cursor: nwse-resize !important;
+}
