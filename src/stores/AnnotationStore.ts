@@ -38,6 +38,8 @@ export class AnnotationStore {
     this.elementIds = {
       imageWrapper: nanoid(),
       transformWrapper: nanoid(),
+      transformComponent: nanoid(),
+      displayWrapper: nanoid(),
       getGroupId: id => `annotation-g-${id}`,
       getRectId: id => `box-rect-${id}`,
       getBoxId: id => `box-g-${id}`,

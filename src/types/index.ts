@@ -12,6 +12,8 @@ export interface BoundingBox extends Bounds {
 export interface ElementIds {
   imageWrapper: string;
   transformWrapper: string;
+  transformComponent: string;
+  displayWrapper: string;
   getGroupId(id: string): string;
   getRectId(id: string): string;
   getBoxId(id: string): string;
