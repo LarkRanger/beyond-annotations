@@ -7,6 +7,7 @@ import {
 } from 'react-zoom-pan-pinch';
 import { Annotation } from 'components';
 import { observer } from 'mobx-react-lite';
+import './styles.css';
 
 function DisplayInner(props: HTMLAttributes<HTMLDivElement>) {
   const store = useStore();
