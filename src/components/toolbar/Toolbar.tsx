@@ -1,6 +1,6 @@
 import { Accordion } from '@mantine/core';
 import { observer } from 'mobx-react-lite';
-import { ToolList } from './pieces';
+import { AnnotationList, LabelList, ToolList } from './pieces';
 
 function ToolbarInner() {
   return (
@@ -16,9 +16,15 @@ function ToolbarInner() {
       </Accordion.Item>
       <Accordion.Item value='annotations'>
         <Accordion.Control>Annotations</Accordion.Control>
+        <Accordion.Panel>
+          <AnnotationList />
+        </Accordion.Panel>
       </Accordion.Item>
       <Accordion.Item value='labels'>
         <Accordion.Control>Labels</Accordion.Control>
+        <Accordion.Panel>
+          <LabelList />
+        </Accordion.Panel>
       </Accordion.Item>
     </Accordion>
   );

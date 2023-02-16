@@ -1,4 +1,4 @@
-import { HTMLAttributes } from 'react';
+import { HTMLAttributes, useEffect, useRef } from 'react';
 import { useStore } from 'hooks';
 import {
   ReactZoomPanPinchRef,
@@ -11,10 +11,15 @@ import './styles.css';
 
 function DisplayInner(props: HTMLAttributes<HTMLDivElement>) {
   const store = useStore();
+  const ref = useRef<ReactZoomPanPinchRef>(null);
 
   function onZoom(ref: ReactZoomPanPinchRef) {
     store.scale = ref.state.scale;
   }
+
+  useEffect(() => {
+    ref.current?.resetTransform();
+  }, [store.imageDimensions]);
 
   return (
     <div {...props} id={store.elementIds.displayWrapper}>
@@ -24,7 +29,8 @@ function DisplayInner(props: HTMLAttributes<HTMLDivElement>) {
         onZoom={onZoom}
         centerOnInit={true}
         minScale={store.initialScale}
-        initialScale={store.initialScale}>
+        initialScale={store.initialScale}
+        ref={ref}>
         <TransformComponent
           wrapperClass={`${store.elementIds.transformWrapper} annotation-transform-wrapper`}
           contentClass={`${store.elementIds.transformComponent} annotation-transform-component`}>
