@@ -1,1 +1,1 @@
-export * from './annotation/Annotation'
+export * from './annotation'
