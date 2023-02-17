@@ -1,4 +1,4 @@
-import { LabelColors } from 'consts';
+import { DEFAULT_LABEL_COLOR } from 'consts';
 import { makeAutoObservable } from 'mobx';
 import { nanoid } from 'nanoid';
 
@@ -7,12 +7,12 @@ export class Label {
   private _name: string;
   private _color: string;
 
-  constructor(name: string) {
+  constructor(name: string, color?: string) {
     makeAutoObservable(this, undefined, { autoBind: true });
 
     this.id = nanoid();
     this._name = name;
-    this._color = LabelColors.DEFAULT;
+    this._color = color ?? DEFAULT_LABEL_COLOR;
   }
 
   get name() {

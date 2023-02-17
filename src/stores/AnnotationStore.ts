@@ -269,6 +269,18 @@ export class AnnotationStore {
     return this._labels.find(l => l.id === id);
   }
 
+  addLabel(name: string, color: string) {
+    const label = new Label(name, color);
+    this._labels.push(label);
+  }
+
+  removeLabel(id: string) {
+    const label = this._labels.find(l => l.id === id);
+    if (!label) return;
+    this._userAnnotations.forEach(a => (a.label = undefined));
+    this._labels = this.labels.filter(l => l.id !== id);
+  }
+
   private disableToolbarOptions() {
     this.disablePan();
     this.disableDrag();

@@ -1,4 +1,4 @@
-import { DEFAULT_LABEL, LabelColors } from 'consts';
+import { DEFAULT_LABEL, DEFAULT_LABEL_COLOR } from 'consts';
 import { makeAutoObservable, reaction } from 'mobx';
 import { nanoid } from 'nanoid';
 import { BoundingBox, Bounds } from 'types';
@@ -65,7 +65,7 @@ export class UserAnnotation {
     return label?.name ?? DEFAULT_LABEL;
   }
 
-  set label(id: string) {
+  set label(id: string | undefined) {
     this._labelId = id;
   }
 
@@ -86,9 +86,9 @@ export class UserAnnotation {
   }
 
   get color(): string {
-    if (!this._labelId) return LabelColors.DEFAULT;
+    if (!this._labelId) return DEFAULT_LABEL_COLOR;
     const label = this.annotationStore.getLabel(this._labelId);
-    return label?.color ?? LabelColors.DEFAULT;
+    return label?.color ?? DEFAULT_LABEL_COLOR;
   }
 
   get scale(): number {
