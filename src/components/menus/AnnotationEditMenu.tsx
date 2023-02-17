@@ -54,7 +54,15 @@ function AnnotationEditMenuInner({
           <Menu.Item
             key={l.id}
             onClick={handleRelabel(l)}
-            style={{ backgroundColor: l.color, color: 'black' }}>
+            icon={
+              <div
+                style={{
+                  width: 10,
+                  height: 10,
+                  backgroundColor: l.color,
+                  borderRadius: '50%',
+                }}></div>
+            }>
             {l.name}
           </Menu.Item>
         ))}

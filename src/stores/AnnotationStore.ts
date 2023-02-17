@@ -26,7 +26,7 @@ export class AnnotationStore {
     makeAutoObservable(this, undefined, { autoBind: true });
 
     this._userAnnotations = [];
-    this._labels = [new Label('Unnamed Bounding Box')];
+    this._labels = [new Label('Default Label')];
     this._scale = 1;
     this._initialScale = 1;
     this._isPanEnabled = true;

@@ -17,7 +17,14 @@ function AnnotationCardInner({ annotation }: AnnotationCardProps) {
 
   return (
     <Card
-      style={{ backgroundColor: annotation.color, color: 'black' }}
+      style={{
+        backgroundColor: annotation.color,
+        color: 'black',
+        cursor: 'pointer',
+        outlineColor: 'white',
+        outlineWidth: annotation.isSelected ? 2 : 0,
+        outlineStyle: 'solid',
+      }}
       onClick={onClick}>
       <Flex justify='space-between' align='center'>
         <Text truncate>{annotation.label}</Text>
