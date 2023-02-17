@@ -13,7 +13,7 @@ interface ResizeProps {
 }
 
 function ResizeInner({ annotation }: ResizeProps) {
-  const { elementIds } = useStore();
+  const { elementIds, areAnnotationsShown } = useStore();
 
   useEffect(() => {
     const gId = `#${elementIds.getGroupId(annotation.id)}`;
@@ -168,6 +168,7 @@ function ResizeInner({ annotation }: ResizeProps) {
       () => annotation.creationEvent,
       creationEvent => {
         if (creationEvent) {
+          console.log('dragging');
           annotation.select();
           topDraggable.startDrag(creationEvent);
           leftDraggable.startDrag(creationEvent);
@@ -188,7 +189,9 @@ function ResizeInner({ annotation }: ResizeProps) {
     <g
       id={elementIds.getResizeId(annotation.id)}
       visibility={
-        annotation.isSelected && annotation.isDraggable ? 'visible' : 'hidden'
+        annotation.isSelected && annotation.isDraggable && areAnnotationsShown
+          ? 'visible'
+          : 'hidden'
       }>
       <Handle
         className='topLeft !important'

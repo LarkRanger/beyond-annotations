@@ -17,7 +17,7 @@ export class AnnotationStore {
   private _isPanEnabled: boolean;
   private _isDragEnabled: boolean;
   private _tool: Tool;
-  private _arePredictionsShown: boolean;
+  private _areAnnotationsShown: boolean;
   private _areLabelsShown: boolean;
   private _handleMouseDown?: (e: MouseEvent) => void;
   readonly elementIds: ElementIds;
@@ -32,7 +32,7 @@ export class AnnotationStore {
     this._isPanEnabled = true;
     this._isDragEnabled = false;
     this._tool = Tools.PAN;
-    this._arePredictionsShown = true;
+    this._areAnnotationsShown = true;
     this._areLabelsShown = true;
     this._imageDimensions = { width: 0, height: 0 };
 
@@ -124,8 +124,8 @@ export class AnnotationStore {
     return !this._isDragEnabled;
   }
 
-  get arePredictionsShown(): boolean {
-    return this._arePredictionsShown;
+  get areAnnotationsShown(): boolean {
+    return this._areAnnotationsShown;
   }
 
   get areLabelsShown(): boolean {
@@ -172,8 +172,8 @@ export class AnnotationStore {
     this._selectedId = undefined;
   }
 
-  toggleShowPredictions() {
-    this._arePredictionsShown = !this._arePredictionsShown;
+  toggleShowAnnotations() {
+    this._areAnnotationsShown = !this._areAnnotationsShown;
   }
 
   toggleShowLabels() {
@@ -188,7 +188,7 @@ export class AnnotationStore {
   }
 
   setInitialScale() {
-    const wrapper = document.getElementById('annotation-display-wrapper');
+    const wrapper = document.getElementById(this.elementIds.imageWrapper);
     if (!wrapper) return 1;
     const bounds = wrapper.getBoundingClientRect();
     const diff = Math.max(
@@ -274,7 +274,7 @@ export class AnnotationStore {
     this.disableDrag();
     if (this._handleMouseDown) {
       document
-        .getElementById('annotation-image-wrapper')
+        .getElementById(this.elementIds.imageWrapper)
         ?.removeEventListener('mousedown', this._handleMouseDown);
       this._handleMouseDown = undefined;
       this.userAnnotations[this.userAnnotations.length - 1]?.remove();
@@ -285,6 +285,6 @@ export class AnnotationStore {
     this._userAnnotations = [];
     this.scale = 1;
     this.tool = Tools.PAN;
-    this._arePredictionsShown = true;
+    this._areAnnotationsShown = true;
   }
 }

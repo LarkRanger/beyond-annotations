@@ -8,13 +8,13 @@ interface AnnotationProps {
 }
 
 function AnnotationInner({ annotation }: AnnotationProps) {
-  const { elementIds } = useStore();
+  const { elementIds, areAnnotationsShown } = useStore();
 
   return (
     <g
       id={elementIds.getGroupId(annotation.id)}
       transform={`translate(${annotation.box.x}, ${annotation.box.y})`}
-      visibility={annotation.isCreating ? 'hidden' : 'visible'}>
+      visibility={areAnnotationsShown ? 'visible' : 'hidden'}>
       <Box annotation={annotation} />
       <Label annotation={annotation} />
       <Resize annotation={annotation} />

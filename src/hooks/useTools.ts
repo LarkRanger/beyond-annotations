@@ -11,7 +11,7 @@ export function useTools() {
     disablePan,
     tool,
     toggleShowLabels,
-    toggleShowPredictions,
+    toggleShowAnnotations: toggleShowPredictions,
   } = useStore();
 
   return {

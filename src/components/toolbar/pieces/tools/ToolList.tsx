@@ -33,6 +33,12 @@ function ToolListInner() {
       <Button onClick={() => (store.tool = Tools.ANNOTATE)} disabled={disabled}>
         ✏ Annotate
       </Button>
+      <Button onClick={store.toggleShowLabels} disabled={disabled}>
+        👁 {store.areLabelsShown ? 'Hide' : 'Show'} labels
+      </Button>
+      <Button onClick={store.toggleShowAnnotations} disabled={disabled}>
+        👁 {store.areAnnotationsShown ? 'Hide' : 'Show'} annotations
+      </Button>
     </Flex>
   );
 }

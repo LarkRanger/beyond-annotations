@@ -7,9 +7,9 @@ function AnnotationListInner() {
 
   return (
     <Flex direction='column' p={10} gap={3}>
-      {store.visibleUserAnnotations.length === 0 &&
+      {store.listedUserAnnotations.length === 0 &&
         'No annotations yet - why not add some?'}
-      {store.visibleUserAnnotations.map(a => (
+      {store.listedUserAnnotations.map(a => (
         <Card key={a.id} style={{ backgroundColor: a.color, color: 'black' }}>
           {a.label}
         </Card>

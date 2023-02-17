@@ -7,11 +7,13 @@ interface LabelProps {
 }
 
 function LabelInner({ annotation }: LabelProps) {
-  const { elementIds } = useStore();
+  const { elementIds, areLabelsShown, areAnnotationsShown } = useStore();
   const dimensions = useLabelDimensions(annotation);
 
   return (
-    <g id={elementIds.getLabelId(annotation.id)}>
+    <g
+      id={elementIds.getLabelId(annotation.id)}
+      visibility={areLabelsShown && areAnnotationsShown ? 'visible' : 'hidden'}>
       <path
         d={`
           M 0,0
