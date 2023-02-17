@@ -18,8 +18,8 @@ function DisplayInner(props: HTMLAttributes<HTMLDivElement>) {
   }
 
   useEffect(() => {
-    ref.current?.resetTransform();
-  }, [store.imageDimensions]);
+    ref.current?.centerView(store.initialScale);
+  }, [store.imageDimensions, store.initialScale]);
 
   return (
     <div {...props} id={store.elementIds.displayWrapper}>

@@ -1,6 +1,7 @@
 .annotation-transform-wrapper {
   width: 100% !important;
   height: 100% !important;
+  overflow: hidden;
 }
 
 .annotation-transform-component {

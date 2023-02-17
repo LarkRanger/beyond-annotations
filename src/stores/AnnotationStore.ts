@@ -183,17 +183,22 @@ export class AnnotationStore {
   loadImage() {
     const image = new Image();
     image.src = this.imageSrc;
-    image.onload = () =>
-      (this.imageDimensions = { width: image.width, height: image.height });
+    image.onload = () => {
+      const dimensions = { width: image.width, height: image.height };
+      this.setInitialScale(dimensions);
+      this.imageDimensions = dimensions;
+    };
   }
 
-  setInitialScale() {
-    const wrapper = document.getElementById(this.elementIds.imageWrapper);
+  private setInitialScale(dimensions: Dimensions) {
+    const wrapper = document.getElementsByClassName(
+      this.elementIds.transformWrapper,
+    )[0];
     if (!wrapper) return 1;
     const bounds = wrapper.getBoundingClientRect();
     const diff = Math.max(
-      this.imageDimensions.width / bounds.width,
-      this.imageDimensions.height / bounds.height,
+      dimensions.width / bounds.width,
+      dimensions.height / bounds.height,
     )!;
 
     const scale = diff > 1 ? 1 / diff : 1;

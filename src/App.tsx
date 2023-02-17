@@ -19,6 +19,7 @@ function App() {
         theme={{ colorScheme: 'dark' }}>
         <AppShell
           padding='md'
+          style={{ overflow: 'hidden' }}
           navbar={
             <Navbar width={{ base: 300 }}>
               <Toolbar />

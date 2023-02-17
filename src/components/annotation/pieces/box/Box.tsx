@@ -4,7 +4,6 @@ import { observer } from 'mobx-react-lite';
 import { useEffect } from 'react';
 import { UserAnnotation } from 'stores';
 import { Draggable } from 'gsap/Draggable';
-import { ContextMenu } from 'components/contextMenu';
 import './styles.css';
 
 interface BoxProps {
@@ -70,17 +69,15 @@ function BoxInner({ annotation }: BoxProps) {
 
   return (
     <g id={elementIds.getBoxId(annotation.id)}>
-      <ContextMenu annotation={annotation}>
-        <rect
-          id={elementIds.getRectId(annotation.id)}
-          stroke={annotation.color}
-          width={annotation.box.width}
-          height={annotation.box.height}
-          strokeWidth={1 / annotation.scale}
-          fill={annotation.color}
-          fillOpacity={annotation.isSelected ? 0.5 : 0.3}
-        />
-      </ContextMenu>
+      <rect
+        id={elementIds.getRectId(annotation.id)}
+        stroke={annotation.color}
+        width={annotation.box.width}
+        height={annotation.box.height}
+        strokeWidth={1 / annotation.scale}
+        fill={annotation.color}
+        fillOpacity={annotation.isSelected ? 0.5 : 0.3}
+      />
     </g>
   );
 }

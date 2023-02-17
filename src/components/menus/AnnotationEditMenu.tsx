@@ -1,15 +1,7 @@
-import {
-  Button,
-  ColorInput,
-  Flex,
-  Menu,
-  Select,
-  TextInput,
-} from '@mantine/core';
-import { DEFAULT_LABEL_COLOR } from 'consts';
+import { Button, Menu } from '@mantine/core';
 import { useStore } from 'hooks';
 import { observer } from 'mobx-react-lite';
-import { FormEvent, PropsWithChildren, useState } from 'react';
+import { PropsWithChildren, useState } from 'react';
 import { Label, UserAnnotation } from 'stores';
 import { LabelEditMenu } from './LabelEditMenu';
 
