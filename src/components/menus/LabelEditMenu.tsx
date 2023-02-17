@@ -1,22 +1,15 @@
-import {
-  Button,
-  ColorInput,
-  Flex,
-  Menu,
-  Radio,
-  TextInput,
-} from '@mantine/core';
+import { Button, ColorInput, Flex, Menu, TextInput } from '@mantine/core';
 import { DEFAULT_LABEL_COLOR } from 'consts';
 import { useStore } from 'hooks';
 import { observer } from 'mobx-react-lite';
 import { FormEvent, PropsWithChildren, useState } from 'react';
 import { Label } from 'stores';
 
-interface LabelMenuProps extends PropsWithChildren {
+interface LabelEditMenuProps extends PropsWithChildren {
   label?: Label;
 }
 
-function LabelMenuInner({ label, children }: LabelMenuProps) {
+function LabeEditMenuInner({ label, children }: LabelEditMenuProps) {
   const { addLabel, removeLabel } = useStore();
   const [open, setOpen] = useState<boolean>(false);
 
@@ -81,4 +74,4 @@ function LabelMenuInner({ label, children }: LabelMenuProps) {
   );
 }
 
-export const LabelMenu = observer(LabelMenuInner);
+export const LabelEditMenu = observer(LabeEditMenuInner);

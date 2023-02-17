@@ -59,7 +59,7 @@ export class UserAnnotation {
     );
   }
 
-  get label() {
+  get label(): string {
     if (!this._labelId) return DEFAULT_LABEL;
     const label = this.annotationStore.getLabel(this._labelId);
     return label?.name ?? DEFAULT_LABEL;

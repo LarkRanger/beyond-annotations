@@ -6,5 +6,5 @@ export const Tools = {
 
 export type Tool = typeof Tools[keyof typeof Tools];
 
-export const DEFAULT_LABEL = 'Name me...';
+export const DEFAULT_LABEL = 'Unlabeled';
 export const DEFAULT_LABEL_COLOR = '#afafaf';

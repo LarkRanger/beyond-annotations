@@ -1,5 +1,5 @@
 import { Button, Card, Flex, Text } from '@mantine/core';
-import { LabelMenu } from 'components';
+import { LabelEditMenu } from 'components';
 import { observer } from 'mobx-react-lite';
 import { Label } from 'stores';
 
@@ -9,16 +9,14 @@ interface LabelCardProps {
 
 function LabelCardInner({ label }: LabelCardProps) {
   return (
-    <Card
-      key={label.id}
-      style={{ backgroundColor: label.color, color: 'black' }}>
+    <Card style={{ backgroundColor: label.color, color: 'black' }}>
       <Flex justify='space-between' align='center'>
         <Text truncate>{label.name}</Text>
-        <LabelMenu label={label}>
+        <LabelEditMenu label={label}>
           <Button p={7} title='Edit label'>
             ✏
           </Button>
-        </LabelMenu>
+        </LabelEditMenu>
       </Flex>
     </Card>
   );

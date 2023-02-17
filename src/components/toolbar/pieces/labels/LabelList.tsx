@@ -2,18 +2,18 @@ import { Button, Card, Flex, Text } from '@mantine/core';
 import { useStore } from 'hooks';
 import { observer } from 'mobx-react-lite';
 import { LabelCard } from './LabelCard';
-import { LabelMenu } from 'components';
+import { LabelEditMenu } from 'components';
 
 function LabelListInner() {
-  const store = useStore();
+  const { labels } = useStore();
 
   return (
     <Flex direction='column' p={10} gap={3}>
-      <LabelMenu>
+      <LabelEditMenu>
         <Button>Add label</Button>
-      </LabelMenu>
-      {store.labels.length === 0 && 'No labels yet! Why not create some?'}
-      {store.labels.map(l => (
+      </LabelEditMenu>
+      {labels.length === 0 && 'No labels yet - why not add some?'}
+      {labels.map(l => (
         <LabelCard key={l.id} label={l} />
       ))}
     </Flex>

@@ -1,18 +1,17 @@
 import { Card, Flex } from '@mantine/core';
 import { useStore } from 'hooks';
 import { observer } from 'mobx-react-lite';
+import { AnnotationCard } from './AnnotationCard';
 
 function AnnotationListInner() {
-  const store = useStore();
+  const { listedUserAnnotations } = useStore();
 
   return (
     <Flex direction='column' p={10} gap={3}>
-      {store.listedUserAnnotations.length === 0 &&
+      {listedUserAnnotations.length === 0 &&
         'No annotations yet - why not add some?'}
-      {store.listedUserAnnotations.map(a => (
-        <Card key={a.id} style={{ backgroundColor: a.color, color: 'black' }}>
-          {a.label}
-        </Card>
+      {listedUserAnnotations.map(a => (
+        <AnnotationCard key={a.id} annotation={a} />
       ))}
     </Flex>
   );

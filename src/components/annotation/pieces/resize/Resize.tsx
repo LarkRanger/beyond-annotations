@@ -168,7 +168,6 @@ function ResizeInner({ annotation }: ResizeProps) {
       () => annotation.creationEvent,
       creationEvent => {
         if (creationEvent) {
-          console.log('dragging');
           annotation.select();
           topDraggable.startDrag(creationEvent);
           leftDraggable.startDrag(creationEvent);
