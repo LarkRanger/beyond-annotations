@@ -71,7 +71,10 @@ export class AnnotationStore {
 
     reaction(
       () => this.imageSrc,
-      () => this.loadImage(),
+      () => {
+        this.loadImage();
+        this._userAnnotations = [];
+      },
     );
   }
 

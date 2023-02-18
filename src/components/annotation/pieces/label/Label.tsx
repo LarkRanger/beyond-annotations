@@ -29,7 +29,7 @@ function LabelInner({ annotation }: LabelProps) {
       />
       <text
         id={elementIds.getTextId(annotation.id)}
-        x={4}
+        x={4 / annotation.scale}
         y={12 / annotation.scale}
         style={{ transformOrigin: 'top left' }}
         fontSize={12 / annotation.scale}
