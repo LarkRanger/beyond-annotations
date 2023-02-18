@@ -26,7 +26,10 @@ export class AnnotationStore {
     makeAutoObservable(this, undefined, { autoBind: true });
 
     this._userAnnotations = [];
-    this._labels = [new Label('Default Label')];
+    this._labels = [
+      new Label('Red label', '#E90064'),
+      new Label('Blue label', '#537FE7'),
+    ];
     this._scale = 1;
     this._initialScale = 1;
     this._isPanEnabled = true;
