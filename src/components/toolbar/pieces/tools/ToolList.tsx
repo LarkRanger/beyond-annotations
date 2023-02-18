@@ -24,19 +24,34 @@ function ToolListInner() {
         accept='image/png,image/jpeg'
         onChange={onUpload}
       />
-      <Button onClick={() => (store.tool = Tools.PAN)} disabled={disabled}>
+      <Button
+        color={store.tool === Tools.PAN ? 'teal' : 'blue'}
+        onClick={() => (store.tool = Tools.PAN)}
+        disabled={disabled}>
         🔎 Pan
       </Button>
-      <Button onClick={() => (store.tool = Tools.DRAG)} disabled={disabled}>
+      <Button
+        color={store.tool === Tools.DRAG ? 'teal' : 'blue'}
+        onClick={() => (store.tool = Tools.DRAG)}
+        disabled={disabled}>
         ✋ Drag
       </Button>
-      <Button onClick={() => (store.tool = Tools.ANNOTATE)} disabled={disabled}>
+      <Button
+        color={store.tool === Tools.ANNOTATE ? 'teal' : 'blue'}
+        onClick={() => (store.tool = Tools.ANNOTATE)}
+        disabled={disabled}>
         ✏ Annotate
       </Button>
-      <Button onClick={store.toggleShowLabels} disabled={disabled}>
+      <Button
+        color={!store.areLabelsShown ? 'teal' : 'blue'}
+        onClick={store.toggleShowLabels}
+        disabled={disabled}>
         👁 {store.areLabelsShown ? 'Hide' : 'Show'} labels
       </Button>
-      <Button onClick={store.toggleShowAnnotations} disabled={disabled}>
+      <Button
+        color={!store.areAnnotationsShown ? 'teal' : 'blue'}
+        onClick={store.toggleShowAnnotations}
+        disabled={disabled}>
         👁 {store.areAnnotationsShown ? 'Hide' : 'Show'} annotations
       </Button>
     </Flex>
