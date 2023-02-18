@@ -7,7 +7,7 @@ import {
   Flex,
   Title,
 } from '@mantine/core';
-import { Display, Toolbar } from 'components';
+import { Display, Export, Toolbar } from 'components';
 import { AnnotationProvider } from 'contexts';
 
 function App() {
@@ -27,8 +27,12 @@ function App() {
           }
           header={
             <Header height={100} px={30}>
-              <Flex style={{ height: '100%', alignItems: 'center' }}>
+              <Flex
+                style={{ height: '100%' }}
+                align='center'
+                justify='space-between'>
                 <Title order={1}>Beyond Annotations</Title>
+                <Export />
               </Flex>
             </Header>
           }>

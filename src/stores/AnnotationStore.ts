@@ -286,6 +286,10 @@ export class AnnotationStore {
     this._labels = this.labels.filter(l => l.id !== id);
   }
 
+  toJSON() {
+    return this.listedUserAnnotations.map(a => a.toJSON());
+  }
+
   private disableToolbarOptions() {
     this.disablePan();
     this.disableDrag();
